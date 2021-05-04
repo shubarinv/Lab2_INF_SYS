@@ -120,7 +120,7 @@ class matrix
 	}
   }
 
-  T get(int m, int n) const
+  T &get(int m, int n) const
   {
 	if (m >= sizeR || n >= sizeC)
 	{

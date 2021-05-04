@@ -1,0 +1,131 @@
+QMainWindow {
+    background-color: #222222;
+}
+
+QPushButton {
+    background-color: #1e1e1e;
+    border: none;
+    color: #FFFFFF ;
+    border-radius: 4px;
+    padding: 4px 25px 4px 20px;
+}
+QPushButton:pressed{
+    background-color: #222222;
+    color: #FFFFFF ;
+}
+QPushButton:disabled{
+    background-color: #222222;
+    color: #333333 ;
+}
+QMenuBar{
+    background-color: #434343;
+    border: none;
+    color: #ffffff;
+}
+QMenuBar::item {
+    padding: 2px 6px;
+    border: none;
+    background: transparent;
+    text-align:left;
+}
+
+QMenuBar::item:selected { /* when selected using mouse or keyboard */
+    background: #a8a8a8;
+    border: none;
+}
+
+QMenuBar::item:pressed {
+    background: #888888;
+    border: none;
+}
+
+
+
+QMenu::item {
+    background: #434343;
+    color: #ffffff;
+    padding: 2px 25px 2px 5px;
+    text-align:left;
+    border: 1px solid transparent; /* reserve space for selection border */
+}
+
+QMenu::item:selected {
+    border-color: darkblue;
+    background: rgba(4, 4, 4, 100);
+}
+
+
+QMenu::icon:checked { /* appearance of a 'checked' icon */
+    background: #2b2b2b;
+    color: #ffffff;
+    border: 1px gray;
+    top: 1px;
+    right: 1px;
+    bottom: 1px;
+    left: 1px;
+}
+
+QMenu::separator {
+    height: 2px;
+    background: lightblue;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+QMenu::indicator {
+    width: 13px;
+    height: 13px;
+}
+QDialog, QMessageBox{
+background-color: #333333;
+color: #ffffff;
+}
+QMessageBox QLabel {
+    color: rgb(200, 200, 200);
+}
+QLineEdit,QListView{
+    background-color: #434343;
+    color: #FFFFFF ;
+}
+QPushButton#add-btn{
+background:#0062cc;padding: 4px 25px 4px 20px;color:#ffffff;
+}
+QPushButton#add-btn:disabled{
+    background-color: #222222;
+    color: #333333 ;
+    padding: 4px 25px 4px 20px;
+}
+QPushButton#add-btn:pressed{
+background:#0359a3;padding: 4px 25px 4px 20px;color:#ffffff;
+}
+QPushButton#remove-btn{
+background:#d9534f;padding: 4px 25px 4px 20px;color:#ffffff;
+}
+
+QPushButton#remove-btn:pressed{
+background:#b54643;padding: 4px 25px 4px 20px;color:#ffffff;
+}
+QPushButton#remove-btn:disabled{
+    background-color: #222222;
+    color: #333333 ;
+    padding: 4px 25px 4px 20px;
+}
+QPushButton#clear-btn{
+background:#cc9343;padding: 4px 25px 4px 20px;color:#ffffff;
+}
+QPushButton#clear-btn:pressed{
+background:#ad7d39;padding: 4px 25px 4px 20px;color:#ffffff;
+}
+QPushButton#clear-btn:disabled{
+    background-color: #222222;
+    color: #333333 ;
+    padding: 4px 25px 4px 20px;
+}
+
+QLabel {
+color: #ffffff;
+}
+QStatusBar{
+background:#434343;color:#ffffff;
+}
+

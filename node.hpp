@@ -7,40 +7,62 @@
 #include <cmath>
 typedef std::pair<int, int> vec2i;
 class Node {
-   Node* parent{nullptr};
+  Node* parent{nullptr};
   double
-	  f{-1.0},///< sum of g and h
-	  g{-1.0},///< cost of moving from initial cell to current cell (sum of all visited cells)
-	  h{-1.0};///< estimated cost for moving from current cell to final cell
-  std::list<Node> adjacentNodes;
+	  f{std::numeric_limits<double>::max()},        ///< sum of g and h
+	  g{std::numeric_limits<double>::max()},      ///< cost of moving from initial cell to current cell (sum of all visited cells)
+	  h{std::numeric_limits<double>::max()};      ///< estimated cost for moving from current cell to final cell
+  short type = {0}; /**
+ * -1 -wall
+ * 0 -walkable area
+ * 1 -start area
+ * 2 -target area
+ * 3 -visited area
+ * */
 
  public:
   vec2i position{-1, -1};
-  std::list<Node>& GetAdjacentNodes() {
-	return adjacentNodes;
-  }
-  [[maybe_unused]] void AddAdjacentNode(const Node& newNode) {
-	if (adjacentNodes.size() >= 4) {
-	  std::cerr << "Node::addAdjacentNode there are already 4 adjacent nodes!";
-	  throw std::runtime_error("Error in Node::addAdjacentNode too many adjacent nodes");
-	}
 
-	adjacentNodes.push_back(newNode);
-	adjacentNodes.back().parent = this;
+  static double ComputeScore(Node& currentNode, Node& goal) {
+	return CalculateH(currentNode.position, goal.position) + currentNode.g + 1.0;
   }
-  double ComputeScore(Node& currentNode, Node& goal) {
-	g = currentNode.g + 1.0;
-	h = static_cast<double>(abs(goal.position.first - this->position.first) + abs(goal.position.second - this->position.second));
-	return h + g;
+  static double ComputeScore(double t_g,double t_h){
+	return t_g + t_h;
+  }
+  static double CalculateH(vec2i src, vec2i dest) {
+	// h is estimated with the two points distance formula
+	return sqrt(pow((src.first - dest.first), 2.0)
+				+ pow((src.second - dest.second), 2.0));
   }
   [[nodiscard]] double GetF() const {
 	return f;
   }
+  [[nodiscard]] double GetG() const{
+	return g;
+  }
+  [[nodiscard]] double GetH() const{
+	return h;
+  }
   void SetF(double t_f) {
 	f = t_f;
   }
-  void UpdateParent(Node*newParent) {
-	parent=newParent;
+  void SetG(double t_g) {
+	g = t_g;
+  }
+  void SetH(double t_h) {
+	h = t_h;
+  }
+  void UpdateParent(Node* newParent) {
+	parent = newParent;
+  }
+  [[nodiscard]] short GetType() const {
+	return type;
+  }
+  void SetType(short t_type) {
+	type = t_type;
+  }
+  Node* GetParent() {
+	return parent;
   }
 };
 #endif//ANTALG__NODE_HPP_
