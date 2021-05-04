@@ -124,22 +124,22 @@ class A_Star {
   void checkAdjacentNodes(Node& node) {
 	/**
      * 0 - current node
-     *   a--b--c
+     *    --b--
      *   |  |  |
      *   d--0--e
      *   |  |  |
-     *   f--g--h
+     *    --g--
     */
-	//if (!pathFound) checkNode(getIFValid({node.position.first - 1, node.position.second - 1}), &node);//a
+
 	if (!pathFound) checkNode(getIFValid({node.position.first - 1, node.position.second}), &node);    //b
-//	if (!pathFound) checkNode(getIFValid({node.position.first - 1, node.position.second + 1}), &node);//c
+
 
 	if (!pathFound) checkNode(getIFValid({node.position.first, node.position.second - 1}), &node);    //d
 	if (!pathFound) checkNode(getIFValid({node.position.first, node.position.second + 1}), &node);    //e
 
-	//if (!pathFound) checkNode(getIFValid({node.position.first + 1, node.position.second - 1}), &node);//f
+
 	if (!pathFound) checkNode(getIFValid({node.position.first + 1, node.position.second}), &node);    //g
-	//if (!pathFound) checkNode(getIFValid({node.position.first + 1, node.position.second + 1}), &node);//h
+
   }
   void checkNode(Node* node, Node* parent) {
 	if (node == nullptr) return;

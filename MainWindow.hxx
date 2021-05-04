@@ -33,6 +33,7 @@ class MainWindow : public QMainWindow {
 	setFixedSize(screenSize.first / 2 + screenSize.first / 4, screenSize.second / 2);
 	cellSize=80;
 	ResizeGrid();
+
 	SetLocation();
 	setMouseTracking(true);
 	aStar.SetGrid(grid);
@@ -84,27 +85,6 @@ class MainWindow : public QMainWindow {
 	  else
 		state = 'u';
 	});
-	cellSizeSlider = new QSlider(Qt::Horizontal);
-	gridLayout->addWidget(cellSizeSlider, 4, 1);
-	cellSizeLabel = new QLabel();
-	gridLayout->addWidget(cellSizeLabel, 3, 1);
-	cellSizeLabel->setText("Cell size: 80");
-
-	cellSizeSlider->setMaximum(100);
-	cellSizeSlider->setMinimum(1);
-	cellSizeSlider->setValue(80);
-
-	font.setPixelSize(18);
-	cellSizeLabel->setFont(font);
-	connect(cellSizeSlider, &QSlider::sliderReleased, this, [this]() {
-	  ResizeGrid();
-	});
-	connect(cellSizeSlider, &QSlider::valueChanged, this, [this]() {
-	  std::string tmp = "Cell size: ";
-	  tmp += std::to_string(cellSizeSlider->value());
-	  cellSizeLabel->setText(tmp.c_str());
-	  cellSize = cellSizeSlider->value();
-	});
   }
 
  private:
@@ -117,8 +97,6 @@ class MainWindow : public QMainWindow {
   QPushButton *addWall_btn;
   QSpacerItem *spacer;
   QLabel *statusLabel;
-  QSlider *cellSizeSlider;
-  QLabel *cellSizeLabel{};
   int cellSize{30};
   vec2i screenSize{0, 0};
 
